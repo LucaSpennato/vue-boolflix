@@ -1,23 +1,19 @@
 <template>
-    <div class="col-2 border border-dark">
-    <div>
-        Titolo:
-        {{ tvShow.name }}
-    </div>
-    <div>
-        Titolo originale:
-        {{ tvShow.original_title }}
-    </div>
-    <div>
-        Lingua:
-        <span>{{ tvShow.original_language }}</span>
-        <span :class="flagPath(tvShow.original_language)"></span>
-    </div>
-    <div>
-        Voto: 
-        {{ tvShow.vote_average }}
-    </div>
-  </div>
+    <ul class="col-2">
+        <li>
+            Titolo: {{ tvShow.name }}
+        </li>
+        <li>
+            Titolo originale: {{ tvShow.original_title }}
+        </li>
+        <li>
+            Lingua: <span>{{ tvShow.original_language }} </span>
+            <span :class="flagPath(tvShow.original_language)"></span>
+        </li>
+        <li>
+            Voto: {{ tvShow.vote_average }}
+        </li>
+    </ul>
 
 </template>
 

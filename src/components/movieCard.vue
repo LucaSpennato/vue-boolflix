@@ -1,23 +1,19 @@
 <template>
-    <div class="col-2 border border-dark">
-    <div>
-        Titolo:
-        {{ movie.title }}
-    </div>
-    <div>
-        Titolo originale:
-        {{ movie.original_title }}
-    </div>
-    <div>
-        Lingua:
-        <span>{{ movie.original_language }}</span>
-        <span :class="flagPath(movie.original_language)"></span>
-    </div>
-    <div>
-        Voto: 
-        {{ movie.vote_average }}
-    </div>
-  </div>
+    <ul class="col-2">
+        <li>
+            Titolo: {{ movie.title }}
+        </li>
+        <li>
+            Titolo originale: {{ movie.original_title }}
+        </li>
+        <li>
+            Lingua: <span>{{ movie.original_language }} </span>
+            <span :class="flagPath(movie.original_language)"></span>
+        </li>
+        <li>
+            Voto: {{ movie.vote_average }}
+        </li>
+    </ul>
 
 </template>
 
