@@ -18,16 +18,15 @@ export default {
     name: 'headercomponent',
     data: function(){
         return{
-            searchInput: '',
+            searchInput: null,
         }
     },
 
     methods:{
         sendInput: function(){
             this.$emit('searchMovie', this.searchInput)
-            console.log(this.searchInput)
         }
-    }
+    }, 
 }
 </script>
 

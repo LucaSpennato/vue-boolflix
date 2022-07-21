@@ -2,7 +2,9 @@
   <div id="app">
 
     <Header @searchMovie="getMovie"/>
-    <Main/>
+    <Main
+    :movies="movies"
+    />
 
   </div>
 </template>
@@ -21,18 +23,25 @@ export default {
   data: function(){
     return{
       apiCall: 'https://api.themoviedb.org/3/search/movie/?api_key=70b4d3b90fb8be81af37cad624a5b05b&query=',
+      movies: [],
     }
   },
 
   methods:{
+
     getMovie: function(needle){
-      axios.get(this.apiCall + needle)
-      .then((response)=>{
+
+      if(needle !== undefined){
+        axios.get(this.apiCall + needle)
+        .then((response)=>{
           console.log(response.data.results);
-      })
-      .catch((error)=>{
-        console.warn(error);
-      })
+          this.movies = response.data.results;
+          console.log(this.movies)
+        })
+        .catch((error)=>{
+          console.warn(error);
+        })
+      }
     }
   },
   created(){
