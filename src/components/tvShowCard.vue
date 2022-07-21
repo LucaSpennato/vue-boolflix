@@ -26,7 +26,7 @@ export default {
     name: 'tvShowCard',
     props: {
         tvShow: Object,
-
+        // TODO: chiedere se il required è effettivamente indispendabile ad ogni passaggio nonostante io lo abbia messo in principio ma non qua! SICURAMENTE SI
     },
     methods:{
         flagPath: function(language){
