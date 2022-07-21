@@ -31,5 +31,5 @@ export default {
 </script>
 
 <style>
-
+/* TODO: se sarà possibile aggiungi trim o comunque una verifica sulla stringa */
 </style>

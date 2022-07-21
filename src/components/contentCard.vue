@@ -1,6 +1,9 @@
 <template>
     <ul class="col-2">
         <li>
+            <img :src="imgPath(info)" :alt="isTitleOrName(info) + '`s poster'">
+        </li>
+        <li>
             Titolo: {{ isTitleOrName(info) }}
         </li>
         <li>
@@ -50,12 +53,25 @@ export default {
             }else{
                 return array.original_name;
             }
-        }
+        },
+
+        imgPath: function(array){
+            if(array.backdrop_path !== null){
+                return 'http://image.tmdb.org/t/p/w92/' + array.backdrop_path;
+            }else{
+                return '';
+            }
+        },
     }
 }
 </script>
 
 <style lang="scss">
 @import '~flag-icons/css/flag-icons.css';
+
+// img{
+//     width: 5rem;
+//     height: 5rem;
+// }
 
 </style>
