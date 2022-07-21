@@ -10,7 +10,8 @@
     </div>
     <div>
         Lingua:
-        {{ singleMovie.original_language }}
+        <span :class="flagPath(singleMovie.original_language)"></span>
+        
     </div>
     <div>
         Voto: 
@@ -21,15 +22,20 @@
 </template>
 
 <script>
-
 export default {
     name: 'cardMovies',
     props: {
         singleMovie: Object,
+    },
+    methods:{
+        flagPath: function(language){
+            return `fi fi-${language}`
+        },
     }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '~flag-icons/css/flag-icons.css';
 
 </style>

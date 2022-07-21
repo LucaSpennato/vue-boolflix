@@ -18,7 +18,7 @@ export default {
     name: 'headercomponent',
     data: function(){
         return{
-            searchInput: null,
+            searchInput: '',
         }
     },
 
