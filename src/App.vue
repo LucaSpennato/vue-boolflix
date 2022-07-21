@@ -1,17 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <Header/>
+    <Main/>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Main from './components/Main.vue';
+import Header from './components/Header.vue';
+import axios from 'axios';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Main,
+  },
+  data: function(){
+    return{
+      call: 'https://api.themoviedb.org/3/movie/550?api_key=70b4d3b90fb8be81af37cad624a5b05b',
+    }
+  },
+
+  methods:{
+    getStuff: function(){
+      axios.get(this.call)
+      .then((response)=>{
+        console.log(response);
+      })
+      .catch((error)=>{
+        console.warn(error);
+      })
+    }
+  },
+  created(){
+    this.getStuff();
   }
 }
 </script>
