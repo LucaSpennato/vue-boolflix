@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <Header/>
+    <Header @searchMovie="getMovie"/>
     <Main/>
 
   </div>
@@ -20,15 +20,15 @@ export default {
   },
   data: function(){
     return{
-      call: 'https://api.themoviedb.org/3/movie/550?api_key=70b4d3b90fb8be81af37cad624a5b05b',
+      apiCall: 'https://api.themoviedb.org/3/search/movie/?api_key=70b4d3b90fb8be81af37cad624a5b05b&query=',
     }
   },
 
   methods:{
-    getStuff: function(){
-      axios.get(this.call)
+    getMovie: function(needle){
+      axios.get(this.apiCall + needle)
       .then((response)=>{
-        console.log(response);
+          console.log(response.data.results);
       })
       .catch((error)=>{
         console.warn(error);
@@ -36,18 +36,12 @@ export default {
     }
   },
   created(){
-    this.getStuff();
+    this.getMovie();
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import '~bootstrap/scss/bootstrap.scss';
+
 </style>
