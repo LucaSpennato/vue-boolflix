@@ -11,7 +11,6 @@
     <div>
         Lingua:
         <span :class="flagPath(singleMovie.original_language)"></span>
-        
     </div>
     <div>
         Voto: 
@@ -29,7 +28,14 @@ export default {
     },
     methods:{
         flagPath: function(language){
-            return `fi fi-${language}`
+            // TODO: chiedi se possa andar bene, altrimenti v-if con messaggio tipo: 'nessuna lingua'
+            if(language === 'en'){
+                return `fi fi-us`;
+            }else if(language == null && language == '' && language == null){
+                return `fi fi-xx`
+            }else{
+                return `fi fi-${language}`;
+            }
         },
     }
 }
