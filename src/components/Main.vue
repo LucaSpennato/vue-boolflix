@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row">
         <movieCard 
-        v-for="movie in movies" :key="movie.id"
-        :singleMovie="movie"
+        v-for="show in contentResults" :key="show.id"
+        :singleShow="show"
         />
       </div>
     </div>
@@ -20,7 +20,10 @@ export default {
       movieCard,
     },
     props:{
-        movies: Array,
+        contentResults: {
+          required: true,
+          type: Array,
+        },
     }
 }
 </script>
