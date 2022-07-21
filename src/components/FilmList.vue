@@ -4,22 +4,22 @@
         <div>
             Films:
         </div>
-        <movieCard 
-            v-for="singleMovie in moviesResults" :key="singleMovie.id"
-            :movie="singleMovie"
-            />
+        <contentCard 
+        v-for="singleMovie in moviesResults" :key="singleMovie.id"
+        :info="singleMovie"
+        />
 
     </div>
   </div>
 </template>
 
 <script>
-import movieCard from '../components/movieCard.vue';
+import contentCard from '../components/contentCard.vue';
 
 export default {
     name: 'FilmList',
     components:{
-        movieCard,
+        contentCard,
     },
     props:{
         moviesResults: {

@@ -1,17 +1,17 @@
 <template>
     <ul class="col-2">
         <li>
-            Titolo: {{ tvShow.name }}
+            Titolo: {{ isTitleOrName(info) }}
         </li>
         <li>
-            Titolo originale: {{ tvShow.original_title }}
+            Titolo originale: {{ info.original_title }}
         </li>
         <li>
-            Lingua: <span>{{ tvShow.original_language }} </span>
-            <span :class="flagPath(tvShow.original_language)"></span>
+            Lingua: <span>{{ info.original_language }} </span>
+            <span :class="flagPath(info.original_language)"></span>
         </li>
         <li>
-            Voto: {{ tvShow.vote_average }}
+            Voto: {{ info.vote_average }}
         </li>
     </ul>
 
@@ -21,7 +21,8 @@
 export default {
     name: 'tvShowCard',
     props: {
-        tvShow: Object,
+        info: Object,
+
         // TODO: chiedere se il required è effettivamente indispendabile ad ogni passaggio nonostante io lo abbia messo in principio ma non qua! SICURAMENTE SI
     },
     methods:{
@@ -32,6 +33,14 @@ export default {
                 return `fi fi-xx`;
             }else{
                 return `fi fi-${language}`;
+            }
+        },
+
+        isTitleOrName: function(array){
+            if(array.hasOwnProperty('title')){
+                return array.title;
+            }else{
+                return array.name;
             }
         },
     }

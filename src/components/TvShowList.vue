@@ -4,21 +4,21 @@
         <div>
             Tv Shows:
         </div>
-        <tvShowCard 
-            v-for="singleTvShow in tvShowsRetults" :key="singleTvShow.id"
-            :tvShow="singleTvShow"
+        <contentCard 
+        v-for="singleTvShow in tvShowsRetults" :key="singleTvShow.id"
+        :info="singleTvShow"
         />
     </div>
   </div>
 </template>
 
 <script>
-import tvShowCard from '../components/tvShowCard.vue';
+import contentCard from '../components/contentCard.vue';
 
 export default {
     name: 'TvShowList',
     components:{
-        tvShowCard,
+        contentCard,
     },
     props:{
         tvShowsRetults:{
