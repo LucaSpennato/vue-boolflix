@@ -3,7 +3,8 @@
 
     <Header @searchMovie="getMovie"/>
     <Main
-    :contentResults="searchResults"
+    :moviesResults="movies"
+    :tvShowsRetults="tvShows"
     />
 
   </div>
@@ -24,8 +25,8 @@ export default {
     return{
       getMovies: 'https://api.themoviedb.org/3/search/movie/?api_key=70b4d3b90fb8be81af37cad624a5b05b',
       getSeries: 'https://api.themoviedb.org/3/search/tv/?api_key=70b4d3b90fb8be81af37cad624a5b05b',
-      searchResults: [],
-      tvShow: [],
+      movies: [],
+      tvShows: [],
     }
   },
 
@@ -36,16 +37,16 @@ export default {
       if(needle !== undefined && needle !== ''){
         axios.get(`${this.getMovies}&query=${needle}`)
         .then((response)=>{
-          this.searchResults = response.data.results;
-          console.log(this.searchResults);
+          this.movies = response.data.results;
+          console.log(this.movies);
         })
         .catch((error)=>{
           console.warn(error);
         });
         axios.get(`${this.getSeries}&query=${needle}`)
         .then((seriesResponse)=>{
-          this.tvShow = seriesResponse.data.results;
-          console.warn(this.tvShow);
+          this.tvShows = seriesResponse.data.results;
+          console.warn(this.tvShows);
         })
       }
     }

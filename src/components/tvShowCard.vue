@@ -2,20 +2,20 @@
     <div class="col-2 border border-dark">
     <div>
         Titolo:
-        {{ movie.title }}
+        {{ tvShow.name }}
     </div>
     <div>
         Titolo originale:
-        {{ movie.original_title }}
+        {{ tvShow.original_title }}
     </div>
     <div>
         Lingua:
-        <span>{{ movie.original_language }}</span>
-        <span :class="flagPath(movie.original_language)"></span>
+        <span>{{ tvShow.original_language }}</span>
+        <span :class="flagPath(tvShow.original_language)"></span>
     </div>
     <div>
         Voto: 
-        {{ movie.vote_average }}
+        {{ tvShow.vote_average }}
     </div>
   </div>
 
@@ -23,14 +23,13 @@
 
 <script>
 export default {
-    name: 'cardMovies',
+    name: 'tvShowCard',
     props: {
-        movie: Object,
+        tvShow: Object,
 
     },
     methods:{
         flagPath: function(language){
-            // TODO: chiedi se possa andar bene, altrimenti v-if con messaggio tipo: 'nessuna lingua'
             if(language === 'en'){
                 return `fi fi-us`;
             }else if(language == null || language == '' || language == null || language == 'zh'){
