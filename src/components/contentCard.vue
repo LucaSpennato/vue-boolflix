@@ -4,7 +4,7 @@
             Titolo: {{ isTitleOrName(info) }}
         </li>
         <li>
-            Titolo originale: {{ info.original_title }}
+            Titolo originale: {{ isOriginalTitleOrName(info) }}
         </li>
         <li>
             Lingua: <span>{{ info.original_language }} </span>
@@ -43,6 +43,14 @@ export default {
                 return array.name;
             }
         },
+
+        isOriginalTitleOrName: function(array){
+            if(array.hasOwnProperty('title')){
+                return array.original_title;
+            }else{
+                return array.original_name;
+            }
+        }
     }
 }
 </script>
