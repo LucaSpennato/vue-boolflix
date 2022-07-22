@@ -60,5 +60,11 @@ export default {
 
 <style lang="scss">
   @import '~bootstrap/scss/bootstrap.scss';
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;700&display=swap');
+
+  *{
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Montserrat', sans-serif;
+  }
 
 </style>
