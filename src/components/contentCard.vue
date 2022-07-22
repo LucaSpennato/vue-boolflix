@@ -5,23 +5,37 @@
         </div>
         <ul class="text-light">
             <li>
-                Titolo: {{ isTitleOrName(info) }}
+                <div class="headings">
+                    Titolo:
+                </div>
+                 <div>
+                    {{ isTitleOrName(info) }}
+                 </div>
             </li>
             <li>
-                Titolo originale: {{ isOriginalTitleOrName(info) }}
+                <div class="headings">Titolo originale:</div>
+                <div>
+                    {{ isOriginalTitleOrName(info) }}
+                </div>
             </li>
             <li>
-                Lingua: <span>{{ info.original_language }} </span>
+                <div class="headings">Lingua originale:</div>
+                <span>{{ info.original_language }} </span>
                 <span :class="flagPath(info.original_language)"></span>
             </li>
             <li>
-                Voto: 
+                <div class="headings">Voto:</div> 
                 <span  v-for="star in 5" :key="star">
                     <i :class="parseVote(info) >= star ? 'bi bi-star-fill text-warning' : 'bi bi-star' "></i> 
                 </span>
             </li>
             <li>
-                Overview: {{ info.overview }}
+                <div class="headings">
+                    Overview:
+                </div>
+                <div>
+                    {{ info.overview }}
+                </div>
             </li>
         </ul>
     </div>
@@ -32,7 +46,10 @@
 export default {
     name: 'tvShowCard',
     props: {
-        info: Object,
+        info: {
+            required: true,
+            type: Object,
+        },
 
         // TODO: chiedere se il required è effettivamente indispendabile ad ogni passaggio nonostante io lo abbia messo in principio ma non qua! SICURAMENTE SI
     },
@@ -75,6 +92,7 @@ export default {
                 return 'http://image.tmdb.org/t/p/w342/' + Object.poster_path;
             }else{
                 return '';
+                // TODO v-if se il contenuto che arriva è vuoto metti un'immagine di errore con classe
             }
         },
     }
@@ -88,6 +106,11 @@ export default {
     .content-card{
         position: relative;
         border: 2px solid white;
+        
+        .headings{
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
 
         img{
             width: 100%;
@@ -97,7 +120,6 @@ export default {
         }
 
         ul{
-            // display: none;
             list-style: none;
             position: absolute;
             height: 100%;
@@ -110,14 +132,15 @@ export default {
             background-color: black;
             transition: all 200ms linear;
             opacity: 0;
-            transform: rotateY(100deg);
+            transform: rotateY(180deg);
             
             li{
-                font-size: 1.3rem;
+                // font-size: 1.3rem;
+                margin-bottom: .3rem;
             }
         }
         &:hover img{
-            transform: rotateY(100deg);
+            transform: rotateY(180deg);
             opacity: 0;
         }
         &:hover ul{
