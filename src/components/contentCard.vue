@@ -15,11 +15,18 @@
         </li>
         <li>
             Voto: 
-            <span v-for="(star, index ) in parseVote(info)" :key="index">
-                *
-            </span>
+                <div class="d-inline">
+                    <span  v-for="(star, index) in parseVote(info)" :key="index">
+                        <i class="bi bi-star-fill"></i>
+                    </span>
+                </div>
+        
+                <div class="d-inline">
+                    <span  v-for="(emptyStar, emptyStarIndex) in (5 - parseVote(info))" :key="emptyStarIndex">
+                    <i class="bi bi-star"></i>
+                    </span>
+                </div>
         </li>
-
     </ul>
 
 </template>
@@ -78,10 +85,5 @@ export default {
 
 <style lang="scss">
 @import '~flag-icons/css/flag-icons.css';
-
-// img{
-//     width: 5rem;
-//     height: 5rem;
-// }
-
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 </style>
