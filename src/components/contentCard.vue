@@ -15,17 +15,9 @@
         </li>
         <li>
             Voto: 
-                <div class="d-inline">
-                    <span  v-for="(star, index) in parseVote(info)" :key="index">
-                        <i class="bi bi-star-fill"></i>
-                    </span>
-                </div>
-        
-                <div class="d-inline">
-                    <span  v-for="(emptyStar, emptyStarIndex) in (5 - parseVote(info))" :key="emptyStarIndex">
-                    <i class="bi bi-star"></i>
-                    </span>
-                </div>
+            <span  v-for="star in 5" :key="star">
+                <i :class="parseVote(info) >= star ? 'bi bi-star-fill' : 'bi bi-star' "></i> 
+            </span>
         </li>
     </ul>
 
