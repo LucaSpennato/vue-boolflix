@@ -12,10 +12,9 @@
         <li>
             Lingua: <span>{{ info.original_language }} </span>
             <span :class="flagPath(info.original_language)"></span>
-            <flag :iso="info.original_language"/>
         </li>
         <li>
-            Voto: {{ info.vote_average }}
+            Voto: {{ parseVote(info) }}
         </li>
     </ul>
 
@@ -30,35 +29,41 @@ export default {
         // TODO: chiedere se il required è effettivamente indispendabile ad ogni passaggio nonostante io lo abbia messo in principio ma non qua! SICURAMENTE SI
     },
     methods:{
+
+        parseVote: function(Object){
+            let vote = Math.ceil(Object.vote_average/2);
+            return vote;
+        },
+
         flagPath: function(language){
             if(language === 'en'){
                 return `fi fi-us`;
-            }else if(language == null || language == '' || language == null || language == 'zh'){
+            }else if(language == null || language == '' || language == 'zh'){
                 return `fi fi-xx`;
             }else{
                 return `fi fi-${language}`;
             }
         },
 
-        isTitleOrName: function(array){
-            if(array.hasOwnProperty('title')){
-                return array.title;
+        isTitleOrName: function(Object){
+            if(Object.hasOwnProperty('title')){
+                return Object.title;
             }else{
-                return array.name;
+                return Object.name;
             }
         },
 
-        isOriginalTitleOrName: function(array){
-            if(array.hasOwnProperty('title')){
-                return array.original_title;
+        isOriginalTitleOrName: function(Object){
+            if(Object.hasOwnProperty('title')){
+                return Object.original_title;
             }else{
-                return array.original_name;
+                return Object.original_name;
             }
         },
 
-        imgPath: function(array){
-            if(array.backdrop_path !== null){
-                return 'http://image.tmdb.org/t/p/w92/' + array.backdrop_path;
+        imgPath: function(Object){
+            if(Object.backdrop_path !== null){
+                return 'http://image.tmdb.org/t/p/w92/' + Object.backdrop_path;
             }else{
                 return '';
             }
