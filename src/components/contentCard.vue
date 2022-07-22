@@ -64,6 +64,7 @@ export default {
         flagPath: function(language){
             if(language === 'en'){
                 return `fi fi-us`;
+                // TODO sistema per ogni lingua
             }else if(language == null || language == '' || language == 'zh'){
                 return `fi fi-xx`;
             }else{

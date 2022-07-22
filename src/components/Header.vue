@@ -1,12 +1,17 @@
 <template>
   <header>
     <div class="container">
-        <div class="row p-2 text-center">
-            <nav class="col-12">
-                <input type="text" v-model="searchInput">
-                <button class="btn btn-primary"
+        <div class="row p-2 text-center justify-content-between">
+            <div class="col-2 fs-2 text-danger fw-bold title">
+                boolflix
+            </div>
+            <nav class="col-4 d-flex align-items-center">
+                <input type="text" v-model="searchInput"
+                @keyup.enter="sendInput()">
+
+                <button class="btn btn-danger mx-3 fw-bold"
                 @click="sendInput()"
-                >cerca</button>
+                >Cerca</button>
             </nav>
         </div>
     </div>
@@ -14,6 +19,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'headercomponent',
     data: function(){
@@ -31,9 +37,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 /* TODO: se sarà possibile aggiungi trim o comunque una verifica sulla stringa */
     header{
         background-color: black;
         height: 4rem;
+
+        .title{
+            font-family: 'Bebas Neue', cursive;
+        }
     }
 </style>
