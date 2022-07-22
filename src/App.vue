@@ -11,9 +11,6 @@
 </template>
 
 <script>
-import FlagIcon from 'vue-flag-icon';
-Vue.use(FlagIcon);
-
 import Main from './components/Main.vue';
 import Header from './components/Header.vue';
 import axios from 'axios';
