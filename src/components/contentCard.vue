@@ -93,10 +93,11 @@ export default {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: all 200ms linear;
         }
 
         ul{
-            display: none;
+            // display: none;
             list-style: none;
             position: absolute;
             height: 100%;
@@ -107,14 +108,21 @@ export default {
             left: 0;
             overflow: auto;
             background-color: black;
+            transition: all 200ms linear;
+            opacity: 0;
+            transform: rotateY(100deg);
             
             li{
                 font-size: 1.3rem;
             }
         }
-
+        &:hover img{
+            transform: rotateY(100deg);
+            opacity: 0;
+        }
         &:hover ul{
-            display: block;
+            transform: rotateY(0);
+            opacity: 1;
         }
 
         ul::-webkit-scrollbar{
