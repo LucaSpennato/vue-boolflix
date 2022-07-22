@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-dark">
+  <header>
     <div class="container">
         <div class="row p-2 text-center">
             <nav class="col-12">
@@ -30,6 +30,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 /* TODO: se sarà possibile aggiungi trim o comunque una verifica sulla stringa */
+    header{
+        background-color: black;
+        height: 4rem;
+    }
 </style>

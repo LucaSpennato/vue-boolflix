@@ -1,9 +1,7 @@
 <template>
-  <main>
-
+  <main class="bg-dark">
     <FilmList :moviesResults="moviesResults"/>
     <TvShowList :tvShowsRetults="tvShowsRetults"/>
-    
   </main>
 </template>
 
@@ -34,6 +32,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+  main{
+    min-height: calc(100vh - 4rem)
+  }
+
 /* TODO: chiedere se posso aggiungere una verifica v-if="moviesResults.length > 0" in caso di elementi mancanti ed anche un loader! */
 </style>

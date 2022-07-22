@@ -38,7 +38,8 @@ export default {
         axios.get(`${this.getMovies}&query=${needle}`)
         .then((response)=>{
           this.movies = response.data.results;
-          console.log(this.movies);
+          // console.log(this.movies);
+          // TODO sistemare gli oggetti in ordine di id
         })
         .catch((error)=>{
           console.warn(error);
@@ -46,7 +47,7 @@ export default {
         axios.get(`${this.getSeries}&query=${needle}`)
         .then((seriesResponse)=>{
           this.tvShows = seriesResponse.data.results;
-          console.warn(this.tvShows);
+          // console.warn(this.tvShows);
         })
       }
     }

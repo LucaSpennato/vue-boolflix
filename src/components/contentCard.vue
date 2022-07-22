@@ -1,25 +1,27 @@
 <template>
-    <ul class="col-2">
-        <li>
+    <div class="col-3 content-card">
+        <div>
             <img :src="imgPath(info)" :alt="isTitleOrName(info) + '`s poster'">
-        </li>
-        <li>
-            Titolo: {{ isTitleOrName(info) }}
-        </li>
-        <li>
-            Titolo originale: {{ isOriginalTitleOrName(info) }}
-        </li>
-        <li>
-            Lingua: <span>{{ info.original_language }} </span>
-            <span :class="flagPath(info.original_language)"></span>
-        </li>
-        <li>
-            Voto: 
-            <span  v-for="star in 5" :key="star">
-                <i :class="parseVote(info) >= star ? 'bi bi-star-fill' : 'bi bi-star' "></i> 
-            </span>
-        </li>
-    </ul>
+        </div>
+        <ul class="text-light">
+            <li>
+                Titolo: {{ isTitleOrName(info) }}
+            </li>
+            <li>
+                Titolo originale: {{ isOriginalTitleOrName(info) }}
+            </li>
+            <li>
+                Lingua: <span>{{ info.original_language }} </span>
+                <span :class="flagPath(info.original_language)"></span>
+            </li>
+            <li>
+                Voto: 
+                <span  v-for="star in 5" :key="star">
+                    <i :class="parseVote(info) >= star ? 'bi bi-star-fill' : 'bi bi-star' "></i> 
+                </span>
+            </li>
+        </ul>
+    </div>
 
 </template>
 
@@ -38,6 +40,7 @@ export default {
             return vote;
         },
 
+    // FIXME Chiedi consiglio su come sistemare!
         flagPath: function(language){
             if(language === 'en'){
                 return `fi fi-us`;
@@ -66,7 +69,7 @@ export default {
 
         imgPath: function(Object){
             if(Object.backdrop_path !== null){
-                return 'http://image.tmdb.org/t/p/w92/' + Object.backdrop_path;
+                return 'http://image.tmdb.org/t/p/w342/' + Object.poster_path;
             }else{
                 return '';
             }
@@ -78,4 +81,21 @@ export default {
 <style lang="scss">
 @import '~flag-icons/css/flag-icons.css';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
+    .content-card{
+        position: relative;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        ul{
+            list-style: none;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+        }
+    }
+
 </style>

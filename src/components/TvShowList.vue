@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row py-3">
-        <div>
+        <div class="text-white fs-1 mb-2">
             Tv Shows:
         </div>
         <contentCard 
