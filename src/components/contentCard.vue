@@ -12,6 +12,7 @@
         <li>
             Lingua: <span>{{ info.original_language }} </span>
             <span :class="flagPath(info.original_language)"></span>
+            <flag :iso="info.original_language"/>
         </li>
         <li>
             Voto: {{ info.vote_average }}
