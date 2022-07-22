@@ -38,7 +38,7 @@ export default {
         axios.get(`${this.getMovies}&query=${needle}`)
         .then((response)=>{
           this.movies = response.data.results;
-          // console.log(this.movies);
+          console.log(this.movies);
           // TODO sistemare gli oggetti in ordine di id
         })
         .catch((error)=>{

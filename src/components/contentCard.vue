@@ -1,5 +1,5 @@
 <template>
-    <div class="col-3 content-card">
+    <div class="col-3 content-card m-3">
         <div>
             <img :src="imgPath(info)" :alt="isTitleOrName(info) + '`s poster'">
         </div>
@@ -17,8 +17,11 @@
             <li>
                 Voto: 
                 <span  v-for="star in 5" :key="star">
-                    <i :class="parseVote(info) >= star ? 'bi bi-star-fill' : 'bi bi-star' "></i> 
+                    <i :class="parseVote(info) >= star ? 'bi bi-star-fill text-warning' : 'bi bi-star' "></i> 
                 </span>
+            </li>
+            <li>
+                Overview: {{ info.overview }}
             </li>
         </ul>
     </div>
@@ -81,6 +84,7 @@ export default {
 <style lang="scss">
 @import '~flag-icons/css/flag-icons.css';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
+
     .content-card{
         position: relative;
 
@@ -93,8 +97,25 @@ export default {
         ul{
             list-style: none;
             position: absolute;
+            height: 100%;
+            width: 100%;
+            padding:  .5rem 1rem 0;
             z-index: 1;
             top: 0;
+            left: 0;
+            overflow: auto;
+            background-color: black;
+            
+            li{
+                font-size: 1.3rem;
+            }
+        }
+
+        ul::-webkit-scrollbar{
+            width: .3rem;
+        }
+        ul::-webkit-scrollbar-thumb{
+            background-color: white;
         }
     }
 
