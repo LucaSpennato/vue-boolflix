@@ -14,8 +14,12 @@
             <span :class="flagPath(info.original_language)"></span>
         </li>
         <li>
-            Voto: {{ parseVote(info) }}
+            Voto: 
+            <span v-for="(star, index ) in parseVote(info)" :key="index">
+                *
+            </span>
         </li>
+
     </ul>
 
 </template>
