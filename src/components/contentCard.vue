@@ -1,5 +1,5 @@
 <template>
-    <div class="col-3 content-card m-3">
+    <div class="col-3 p-0 content-card mx-5 my-3">
         <div>
             <img :src="imgPath(info)" :alt="isTitleOrName(info) + '`s poster'">
         </div>
@@ -87,6 +87,7 @@ export default {
 
     .content-card{
         position: relative;
+        border: 2px solid white;
 
         img{
             width: 100%;
@@ -95,6 +96,7 @@ export default {
         }
 
         ul{
+            display: none;
             list-style: none;
             position: absolute;
             height: 100%;
@@ -109,6 +111,10 @@ export default {
             li{
                 font-size: 1.3rem;
             }
+        }
+
+        &:hover ul{
+            display: block;
         }
 
         ul::-webkit-scrollbar{
