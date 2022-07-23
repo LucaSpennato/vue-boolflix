@@ -6,8 +6,8 @@
     :moviesResults="movies"
     :tvShowsRetults="tvShows"
 
-    :isMovie="isMovie"
-    :isTv="isTv"
+    :areMoviesFound="areMoviesThere"
+    :areTvsFound="areTvsThere"
     />
 
   </div>
@@ -31,8 +31,8 @@ export default {
       apiKey: 'api_key=70b4d3b90fb8be81af37cad624a5b05b',
       movies: [],
       tvShows: [],
-      isMovie: null,
-      isTv: null,
+      areMoviesThere: null,
+      areTvsThere: null,
     }
   },
 
@@ -61,18 +61,18 @@ export default {
     areMoviesFound: function(){
       
       if(this.movies.length === 0){
-        return this.isMovie = false;
+        return this.areMoviesThere = false;
       }else{
-        return this.isMovie = true;
+        return this.areMoviesThere = true;
       }
     },
 
     areTvsFound: function(){
       
       if(this.tvShows.length === 0){
-        return this.isTv = false;
+        return this.areTvsThere = false;
       }else{
-        return this.isTv = true;
+        return this.areTvsThere = true;
       }
     },
 

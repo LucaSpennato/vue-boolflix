@@ -89,7 +89,7 @@ export default {
         },
 
         imgPath: function(Object){
-            if(Object.backdrop_path !== null){
+            if(Object.poster_path !== null){
                 return 'http://image.tmdb.org/t/p/w342/' + Object.poster_path;
             }else{
                 // return 'http://www.travelettes.net/wp-content/uploads/2017/04/5004-432-840x1250.jpg';
@@ -120,15 +120,15 @@ export default {
             transition: all 200ms linear;
         }
 
-        // .img-not-found-placeholder{
+        // .img-not-found-placeholder img{
         //     width: 100%;
         //     height: 100%;
         //     visibility: hidden;
         //     color: white;
         //     object-fit: cover;
-        //  TODO sicuramente no, ma chiedi se un placeholder ha senso, probabilmente è più sensato lasciare l'alt
         // };
 
+        //  TODO sicuramente no, ma chiedi se un placeholder ha senso, probabilmente è più sensato lasciare l'alt
         ul{
             list-style: none;
             position: absolute;

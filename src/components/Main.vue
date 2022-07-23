@@ -1,11 +1,11 @@
 <template>
   <main class="bg-dark">
-    <div v-if="isMovie == null && isTv== null" class="fs-1 text-center text-light p-5">
+    <div v-if="areMoviesFound === null && areTvsFound === null" class="fs-1 text-center text-light p-5">
         Comincia la tua ricerca!
     </div>
-    <div v-else-if="isMovie || isTv">
-      <FilmList :moviesResults="moviesResults" v-if="isMovie"/>
-      <TvShowList :tvShowsRetults="tvShowsRetults" v-if="isTv"/>
+    <div v-else-if="areMoviesFound || areTvsFound">
+      <FilmList :moviesResults="moviesResults" v-if="areMoviesFound"/>
+      <TvShowList :tvShowsRetults="tvShowsRetults" v-if="areTvsFound"/>
     </div>
     <div v-else class="fs-1 text-center text-light p-5">
       Nessun risultato
@@ -38,8 +38,8 @@ export default {
           type: Array,
         },
 
-        isMovie: Boolean,
-        isTv: Boolean,
+        areMoviesFound: Boolean,
+        areTvsFound: Boolean,
     }
 }
 </script>
