@@ -1,7 +1,7 @@
 <template>
   <main class="bg-dark">
-    <FilmList :moviesResults="moviesResults"/>
-    <TvShowList :tvShowsRetults="tvShowsRetults"/>
+    <FilmList :moviesResults="moviesResults" v-if="moviesResults.length > 0"/>
+    <TvShowList :tvShowsRetults="tvShowsRetults" v-if="tvShowsRetults.length > 0"/>
   </main>
 </template>
 
