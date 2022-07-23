@@ -40,7 +40,6 @@ export default {
 
 <style lang="scss">
 // @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-/* TODO: se sarà possibile aggiungi trim o comunque una verifica sulla stringa */
     header{
         background-color: black;
         height: 4rem;

@@ -37,6 +37,4 @@ export default {
   main{
     min-height: calc(100vh - 4rem)
   }
-
-/* TODO: chiedere se posso aggiungere una verifica v-if="moviesResults.length > 0" in caso di elementi mancanti ed anche un loader! */
 </style>

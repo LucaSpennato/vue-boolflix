@@ -1,7 +1,8 @@
 <template>
     <div class="col-3 p-0 content-card mx-5 my-3">
         <div>
-            <img :src="imgPath(info)" :alt="isTitleOrName(info) + '`s poster'">
+            <img :src="imgPath(info)" :alt="isTitleOrName(info) + '`s poster'"
+            class="text-light">
         </div>
         <ul class="text-light">
             <li>
@@ -49,8 +50,6 @@ export default {
             required: true,
             type: Object,
         },
-
-        // TODO: chiedere se il required è effettivamente indispendabile ad ogni passaggio nonostante io lo abbia messo in principio ma non qua! SICURAMENTE SI
     },
     methods:{
 
@@ -59,7 +58,6 @@ export default {
             return vote;
         },
 
-    // FIXME Chiedi consiglio su come sistemare!
         flagPath: function(language){
             if(language === 'en'){
                 return `fi fi-us`;
@@ -94,8 +92,8 @@ export default {
             if(Object.backdrop_path !== null){
                 return 'http://image.tmdb.org/t/p/w342/' + Object.poster_path;
             }else{
+                // return 'http://www.travelettes.net/wp-content/uploads/2017/04/5004-432-840x1250.jpg';
                 return '';
-                // TODO v-if se il contenuto che arriva è vuoto metti un'immagine di errore con classe
             }
         },
     }
@@ -122,6 +120,15 @@ export default {
             transition: all 200ms linear;
         }
 
+        // .img-not-found-placeholder{
+        //     width: 100%;
+        //     height: 100%;
+        //     visibility: hidden;
+        //     color: white;
+        //     object-fit: cover;
+        //  TODO sicuramente no, ma chiedi se un placeholder ha senso, probabilmente è più sensato lasciare l'alt
+        // };
+
         ul{
             list-style: none;
             position: absolute;
@@ -138,7 +145,6 @@ export default {
             transform: rotateY(180deg);
             
             li{
-                // font-size: 1.3rem;
                 margin-bottom: .3rem;
             }
         }
