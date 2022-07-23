@@ -13,7 +13,7 @@
                     {{ isTitleOrName(info) }}
                  </div>
             </li>
-            <li>
+            <li v-if="isOriginalTitleOrName(info) !== isTitleOrName(info)">
                 <div class="headings">Titolo originale:</div>
                 <div>
                     {{ isOriginalTitleOrName(info) }}
@@ -29,7 +29,7 @@
                     <i :class="parseVote(info) >= star ? 'bi bi-star-fill text-warning' : 'bi bi-star' "></i> 
                 </span>
             </li>
-            <li>
+            <li v-if="info.overview !== ''">
                 <div class="headings">
                     Overview:
                 </div>
