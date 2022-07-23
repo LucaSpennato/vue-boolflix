@@ -26,13 +26,13 @@ export default {
     name: 'headercomponent',
     data: function(){
         return{
-            searchInput: '',
+            searchInput: null,
         }
     },
 
     methods:{
         sendInput: function(){
-            this.$emit('searchMovie', this.searchInput)
+            this.$emit('searchMovie', this.searchInput.trim())
         }
     }, 
 }

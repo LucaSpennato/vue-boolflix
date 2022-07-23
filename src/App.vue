@@ -34,7 +34,7 @@ export default {
 
     getMovie: function(needle){
 
-      if(needle !== undefined && needle !== ''){
+      if(needle !== undefined && needle !== null && needle !== ''){
         axios.get(`${this.getMovies}&query=${needle}`)
         .then((response)=>{
           this.movies = response.data.results;
