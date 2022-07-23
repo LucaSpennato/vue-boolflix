@@ -1,7 +1,15 @@
 <template>
   <main class="bg-dark">
-    <FilmList :moviesResults="moviesResults" v-if="moviesResults.length > 0"/>
-    <TvShowList :tvShowsRetults="tvShowsRetults" v-if="tvShowsRetults.length > 0"/>
+    <div v-if="isMovie == null && isTv== null" class="fs-1 text-center text-light p-5">
+        Comincia la tua ricerca!
+    </div>
+    <div v-else-if="isMovie || isTv">
+      <FilmList :moviesResults="moviesResults" v-if="isMovie"/>
+      <TvShowList :tvShowsRetults="tvShowsRetults" v-if="isTv"/>
+    </div>
+    <div v-else class="fs-1 text-center text-light p-5">
+      Nessun risultato
+    </div>
   </main>
 </template>
 
@@ -24,10 +32,14 @@ export default {
           required: true,
           type: Array,
         },
+
         tvShowsRetults:{
           required: true,
           type: Array,
         },
+
+        isMovie: Boolean,
+        isTv: Boolean,
     }
 }
 </script>
