@@ -20,7 +20,6 @@
             </li>
             <li>
                 <div class="headings">Lingua originale:</div>
-                <span>{{ info.original_language }} </span>
                 <span :class="flagPath(info.original_language)"></span>
             </li>
             <li>
@@ -65,8 +64,12 @@ export default {
             if(language === 'en'){
                 return `fi fi-us`;
                 // TODO sistema per ogni lingua
-            }else if(language == null || language == '' || language == 'zh'){
+            }else if(language == null || language == ''){
                 return `fi fi-xx`;
+            }else if(language == 'zh'){
+                return `fi fi-cn`;
+            }else if(language == 'ja'){
+                return `fi fi-jp`;
             }else{
                 return `fi fi-${language}`;
             }
