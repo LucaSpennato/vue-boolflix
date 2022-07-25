@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <Header @searchMovie="getMovie"/>
+    <Header @searchMovie="callParams"/>
     <Main
     :moviesResults="movies"
     :tvShowsRetults="tvShows"
@@ -26,9 +26,10 @@ export default {
   },
   data: function(){
     return{
+      callUrl: 'https://api.themoviedb.org/3/search/',
       getMovies: 'https://api.themoviedb.org/3/search/movie/',
       getSeries: 'https://api.themoviedb.org/3/search/tv/',
-      apiKey: 'api_key=70b4d3b90fb8be81af37cad624a5b05b',
+      apiKey: '70b4d3b90fb8be81af37cad624a5b05b',
       movies: [],
       tvShows: [],
       areMoviesThere: null,
@@ -38,10 +39,23 @@ export default {
 
   methods:{
 
-    getMovie: function(needle){
+    callParams: function(needle){
 
-      if(needle !== undefined && needle !== null && needle !== ''){
-        axios.get(`${this.getMovies}?${this.apiKey}&query=${needle}`)
+      const parameters= {
+        params: {
+          api_key: this.apiKey,
+          query: needle,
+        }
+      }
+      console.log(parameters)
+    this.getMovie(parameters);
+    },
+
+    getMovie: function(apiParams){
+      console.log(apiParams)
+      // if(needle !== undefined && needle !== null && needle !== ''){
+        // axios.get(`${this.getMovies}?${this.apiKey}&query=${needle}`)
+        axios.get(this.callUrl + 'movie', apiParams  )
         .then((response)=>{
           this.movies = response.data.results;
           console.log(this.movies);
@@ -50,12 +64,15 @@ export default {
         .catch((error)=>{
           console.warn(error);
         });
-        axios.get(`${this.getSeries}?${this.apiKey}&query=${needle}`)
-        .then((seriesResponse)=>{
-          this.tvShows = seriesResponse.data.results;
-          this.areTvsFound()
-        })
-      }
+        // axios.get(`${this.getSeries}?${this.apiKey}&query=${needle}`)
+        // .then((seriesResponse)=>{
+        //   this.tvShows = seriesResponse.data.results;
+        //   this.areTvsFound()
+        // })
+        // .catch((error)=>{
+        //   console.warn(error);
+        // });
+      // }
     },
 
     areMoviesFound: function(){
@@ -76,9 +93,6 @@ export default {
       }
     },
 
-  },
-  created(){
-    this.getMovie();
   },
 }
 </script>

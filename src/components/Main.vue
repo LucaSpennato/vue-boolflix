@@ -18,9 +18,6 @@
 import FilmList from '../components/FilmList.vue';
 import TvShowList from '../components/TvShowList.vue';
 
-
-
-
 export default {
     name: 'MainComponent',
     components:{
