@@ -41,6 +41,7 @@ export default {
       const parameters= {
         params: {
           api_key: this.apiKey,
+          language: 'it-IT',
           query: needle,
         }
       }

@@ -31,7 +31,7 @@
             </li>
             <li v-if="info.overview !== ''">
                 <div class="headings">
-                    Overview:
+                    Trama:
                 </div>
                 <div>
                     {{ info.overview }}
