@@ -27,8 +27,6 @@ export default {
   data: function(){
     return{
       callUrl: 'https://api.themoviedb.org/3/search/',
-      getMovies: 'https://api.themoviedb.org/3/search/movie/',
-      getSeries: 'https://api.themoviedb.org/3/search/tv/',
       apiKey: '70b4d3b90fb8be81af37cad624a5b05b',
       movies: [],
       tvShows: [],
@@ -40,7 +38,6 @@ export default {
   methods:{
 
     callParams: function(needle){
-
       const parameters= {
         params: {
           api_key: this.apiKey,
@@ -48,13 +45,14 @@ export default {
         }
       }
       console.log(parameters)
-    this.getMovie(parameters);
+      if(needle !== undefined && needle !== null && needle !== ''){
+        this.getMovie(parameters);
+        this.getSeries(parameters);
+      }
     },
 
     getMovie: function(apiParams){
       console.log(apiParams)
-      // if(needle !== undefined && needle !== null && needle !== ''){
-        // axios.get(`${this.getMovies}?${this.apiKey}&query=${needle}`)
         axios.get(this.callUrl + 'movie', apiParams  )
         .then((response)=>{
           this.movies = response.data.results;
@@ -64,15 +62,17 @@ export default {
         .catch((error)=>{
           console.warn(error);
         });
-        // axios.get(`${this.getSeries}?${this.apiKey}&query=${needle}`)
-        // .then((seriesResponse)=>{
-        //   this.tvShows = seriesResponse.data.results;
-        //   this.areTvsFound()
-        // })
-        // .catch((error)=>{
-        //   console.warn(error);
-        // });
-      // }
+    },
+    getSeries: function(apiParams){
+      axios.get(this.callUrl + 'tv', apiParams)
+      .then((response)=>{
+          this.tvShows = response.data.results;
+          console.log(this.tvShows);
+          this.areTvsFound();
+        })
+        .catch((error)=>{
+          console.warn(error);
+        });
     },
 
     areMoviesFound: function(){
