@@ -7,7 +7,7 @@
         <contentCard 
         v-for="singleMovie in moviesResults" :key="singleMovie.id"
         :info="singleMovie"
-        :moviecast="moviecast"
+        :casts="moviecast"
         />
 
     </div>
@@ -27,7 +27,7 @@ export default {
           required: true,
           type: Array,
         },
-        moviecast: [Array, Object],
+        moviecast: Array,
     },
 }
 </script>

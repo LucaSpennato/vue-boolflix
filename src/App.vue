@@ -6,7 +6,8 @@
     :moviesResults="movies"
     :tvShowsRetults="tvShows"
 
-    :moviecast="moviecast"
+    :moviecast="movieCast"
+    :tvcast="tvCast"
 
     :areMoviesFound="areMoviesThere"
     :areTvsFound="areTvsThere"
@@ -34,7 +35,9 @@ export default {
       tvShows: [],
       areMoviesThere: null,
       areTvsThere: null,
-      moviecast: [],
+      movieCast: [],
+      tvCast: [],
+
     }
   },
 
@@ -62,36 +65,52 @@ export default {
           this.movies = response.data.results;
           console.log(this.movies);
           this.areMoviesFound();
-          this.callCast();
+          this.callMovieCast();
         })
         .catch((error)=>{
           console.warn(error);
         });
     },
 
-    callCast: function(){
-              this.movies.forEach(element => {
-                axios.get('https://api.themoviedb.org/3/movie/'+ element.id +'/credits?api_key=70b4d3b90fb8be81af37cad624a5b05b')
-                .then((response)=>{
-                  this.moviecast = response.data.cast
-                  console.warn(this.moviecast);
-                })
-                .catch((error)=>{
-                    console.warn(error);
-                });
-              })
-        },
-
     getSeries: function(apiParams){
       axios.get(this.callUrl + 'tv', apiParams)
       .then((response)=>{
           this.tvShows = response.data.results;
           console.log(this.tvShows);
+          this.callTvCast()
           this.areTvsFound();
         })
         .catch((error)=>{
           console.warn(error);
         });
+    },
+
+    callMovieCast: function(){
+      this.movies.forEach(element => {
+      axios.get('https://api.themoviedb.org/3/movie/'+ element.id +'/credits?api_key=70b4d3b90fb8be81af37cad624a5b05b')
+      .then((response)=>{
+      this.movieCast = response.data.cast
+      this.movieCast = this.movieCast.slice(0,5)
+      console.log(this.movieCast);
+      })
+      .catch((error)=>{
+      console.warn(error);
+      });
+      })
+    },
+
+    callTvCast: function(){
+      this.tvShows.forEach(element => {
+      axios.get('https://api.themoviedb.org/3/tv/'+ element.id +'/credits?api_key=70b4d3b90fb8be81af37cad624a5b05b')
+      .then((response)=>{
+      this.tvCast = response.data.cast
+      this.tvCast = this.tvCast.slice(0,5)
+      console.warn(this.tvCast);
+      })
+      .catch((error)=>{
+      console.warn(error);
+      });
+      })
     },
 
     areMoviesFound: function(){

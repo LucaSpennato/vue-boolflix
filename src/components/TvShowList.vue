@@ -7,6 +7,8 @@
         <contentCard 
         v-for="singleTvShow in tvShowsRetults" :key="singleTvShow.id"
         :info="singleTvShow"
+        :casts="tvcast"
+        
         />
     </div>
   </div>
@@ -25,6 +27,7 @@ export default {
           required: true,
           type: Array,
         },
+        tvcast: Array,
     },
 }
 </script>

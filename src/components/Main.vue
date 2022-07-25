@@ -1,16 +1,17 @@
 <template>
   <main class="bg-dark">
-    <div class="fs-1 text-warning">
-      CIAO
-    </div>
     <div v-if="areMoviesFound === null && areTvsFound === null" class="fs-1 text-center text-light p-5">
         Comincia la tua ricerca!
     </div>
     <div v-else-if="areMoviesFound || areTvsFound">
+
       <FilmList :moviesResults="moviesResults"
        :moviecast="moviecast"
        v-if="areMoviesFound"/>
-      <TvShowList :tvShowsRetults="tvShowsRetults" v-if="areTvsFound"/>
+
+      <TvShowList :tvShowsRetults="tvShowsRetults"
+        :tvcast="tvcast"
+       v-if="areTvsFound"/>
     </div>
     <div v-else class="fs-1 text-center text-light p-5">
       Nessun risultato
@@ -35,7 +36,8 @@ export default {
           type: Array,
         },
 
-        moviecast: [Array, Object],
+        moviecast: Array,
+        tvcast: Array,
 
         tvShowsRetults:{
           required: true,

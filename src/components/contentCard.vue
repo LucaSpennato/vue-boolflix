@@ -29,8 +29,12 @@
                     <i :class="parseVote(info) >= star ? 'bi bi-star-fill text-warning' : 'bi bi-star' "></i> 
                 </span>
             </li>
-            <li v-for="(cast, index) in moviecast" :key="index">
-                cast: {{ cast.name }}
+            <li>
+                <div>Cast:</div>
+                <div 
+                v-for="cast in casts" :key="cast.id">
+                    {{ cast.name }}
+                </div>
             </li>
             <li v-if="info.overview !== ''">
                 <div class="headings">
@@ -53,7 +57,7 @@ export default {
             required: true,
             type: Object,
         },
-        moviecast: [Array, Object],
+        casts: Array,
     },
     methods:{
         parseVote: function(Object){
