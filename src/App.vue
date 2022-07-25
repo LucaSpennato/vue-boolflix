@@ -32,6 +32,7 @@ export default {
       tvShows: [],
       areMoviesThere: null,
       areTvsThere: null,
+      moviecast: [],
     }
   },
 
@@ -58,12 +59,26 @@ export default {
         .then((response)=>{
           this.movies = response.data.results;
           console.log(this.movies);
-          this.areMoviesFound()
+          this.areMoviesFound();
+          this.callCast();
         })
         .catch((error)=>{
           console.warn(error);
         });
     },
+
+    callCast: function(){
+              this.movies.forEach(element => {
+              axios.get('https://api.themoviedb.org/3/movie/'+ element.id +'/credits?api_key=70b4d3b90fb8be81af37cad624a5b05b')
+              .then((response)=>{
+                  console.warn(response.data);
+              })
+              .catch((error)=>{
+                  console.warn(error);
+              });
+              })
+        },
+
     getSeries: function(apiParams){
       axios.get(this.callUrl + 'tv', apiParams)
       .then((response)=>{

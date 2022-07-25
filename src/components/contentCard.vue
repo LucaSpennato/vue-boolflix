@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'tvShowCard',
     props: {
@@ -51,7 +53,21 @@ export default {
             type: Object,
         },
     },
+    created(){
+        // this.callCast()
+    },
     methods:{
+
+        // callCast: function(){
+            
+        //     axios.get('https://api.themoviedb.org/3/movie/'+ this.info.id +'/credits?api_key=70b4d3b90fb8be81af37cad624a5b05b')
+        //     .then((response)=>{
+        //         console.log(response.data);
+        //     })
+        //     .catch((error)=>{
+        //         console.warn(error);
+        //     });
+        // },
 
         parseVote: function(Object){
             let vote = Math.ceil(Object.vote_average/2);
