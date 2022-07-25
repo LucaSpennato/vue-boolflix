@@ -6,6 +6,8 @@
     :moviesResults="movies"
     :tvShowsRetults="tvShows"
 
+    :moviecast="moviecast"
+
     :areMoviesFound="areMoviesThere"
     :areTvsFound="areTvsThere"
     />
@@ -69,13 +71,14 @@ export default {
 
     callCast: function(){
               this.movies.forEach(element => {
-              axios.get('https://api.themoviedb.org/3/movie/'+ element.id +'/credits?api_key=70b4d3b90fb8be81af37cad624a5b05b')
-              .then((response)=>{
-                  console.warn(response.data);
-              })
-              .catch((error)=>{
-                  console.warn(error);
-              });
+                axios.get('https://api.themoviedb.org/3/movie/'+ element.id +'/credits?api_key=70b4d3b90fb8be81af37cad624a5b05b')
+                .then((response)=>{
+                  this.moviecast = response.data.cast
+                  console.warn(this.moviecast);
+                })
+                .catch((error)=>{
+                    console.warn(error);
+                });
               })
         },
 

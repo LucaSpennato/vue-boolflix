@@ -29,6 +29,9 @@
                     <i :class="parseVote(info) >= star ? 'bi bi-star-fill text-warning' : 'bi bi-star' "></i> 
                 </span>
             </li>
+            <li v-for="(cast, index) in moviecast" :key="index">
+                cast: {{ cast.name }}
+            </li>
             <li v-if="info.overview !== ''">
                 <div class="headings">
                     Trama:
@@ -43,8 +46,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
     name: 'tvShowCard',
     props: {
@@ -52,23 +53,9 @@ export default {
             required: true,
             type: Object,
         },
-    },
-    created(){
-        // this.callCast()
+        moviecast: [Array, Object],
     },
     methods:{
-
-        // callCast: function(){
-            
-        //     axios.get('https://api.themoviedb.org/3/movie/'+ this.info.id +'/credits?api_key=70b4d3b90fb8be81af37cad624a5b05b')
-        //     .then((response)=>{
-        //         console.log(response.data);
-        //     })
-        //     .catch((error)=>{
-        //         console.warn(error);
-        //     });
-        // },
-
         parseVote: function(Object){
             let vote = Math.ceil(Object.vote_average/2);
             return vote;
